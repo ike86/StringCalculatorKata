@@ -15,6 +15,7 @@ namespace StringCalculatorKata.Tests
         [TestCase("", 0, TestName = "Add returns Zero if numbers is empty")]
         [TestCase("1", 1)]
         [TestCase("2", 2)]
+        [TestCase("1,2", 3)]
         public void Add_returns_self_if_numbers_contains_one_number(string numbers, int expected)
         {
             var calculator = new StringCalculator();
