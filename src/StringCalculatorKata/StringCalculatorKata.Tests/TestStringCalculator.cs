@@ -21,5 +21,15 @@ namespace StringCalculatorKata.Tests
 
             result.Should().Be(0);
         }
+
+        [Test]
+        public void Add_ReturnsOne_If_NumbersIsOne()
+        {
+            var calculator = new StringCalculator();
+
+            var result = calculator.Add("1");
+
+            result.Should().Be(1);
+        }
     }
 }
