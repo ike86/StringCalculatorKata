@@ -16,6 +16,7 @@ namespace StringCalculatorKata.Tests
         [TestCase("1", 1)]
         [TestCase("2", 2)]
         [TestCase("1,2", 3)]
+        [TestCase("1,2,3", 6)]
         public void Add_returns_self_if_numbers_contains_one_number(string numbers, int expected)
         {
             var calculator = new StringCalculator();

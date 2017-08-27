@@ -6,18 +6,15 @@ namespace StringCalculatorKata
     {
         public int Add(string numbers)
         {
-            if (numbers == string.Empty)
+            var tokens = numbers.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+            var result = 0;
+            foreach (var token in tokens)
             {
-                return 0;
+                result += int.Parse(token);
             }
 
-            var tokens = numbers.Split(',');
-            if (tokens.Length > 1)
-            {
-                return int.Parse(tokens[0]) + int.Parse(tokens[1]);
-            }
-
-            return int.Parse(numbers);
+            return result;
         }
     }
 }
