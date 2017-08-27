@@ -12,24 +12,16 @@ namespace StringCalculatorKata.Tests
     [TestFixture]
     public class TestStringCalculator
     {
-        [Test]
-        public void Add_ReturnsZero_If_NumbersIsEmpty()
+        [TestCase("", 0, TestName = "Add returns Zero if numbers is empty")]
+        [TestCase("1", 1)]
+        [TestCase("2", 2)]
+        public void Add_returns_self_if_numbers_contains_one_number(string numbers, int expected)
         {
             var calculator = new StringCalculator();
 
-            var result = calculator.Add(string.Empty);
+            var result = calculator.Add(numbers);
 
-            result.Should().Be(0);
-        }
-
-        [Test]
-        public void Add_ReturnsOne_If_NumbersIsOne()
-        {
-            var calculator = new StringCalculator();
-
-            var result = calculator.Add("1");
-
-            result.Should().Be(1);
+            result.Should().Be(expected);
         }
     }
 }

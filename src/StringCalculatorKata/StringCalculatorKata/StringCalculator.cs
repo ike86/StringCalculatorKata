@@ -6,12 +6,12 @@ namespace StringCalculatorKata
     {
         public int Add(string numbers)
         {
-            if (numbers == "1")
+            if (numbers == string.Empty)
             {
-                return 1;
+                return 0;
             }
 
-            return 0;
+            return int.Parse(numbers);
         }
     }
 }
