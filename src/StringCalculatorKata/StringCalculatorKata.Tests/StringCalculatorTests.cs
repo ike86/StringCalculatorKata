@@ -20,5 +20,15 @@ namespace StringCalculatorKata.Tests
 
             sum.Should().Be(0);
         }
+
+        [Test]
+        public void ReturnsNumber_If_NumbersContainsANumber()
+        {
+            var calculator = new StringCalculator();
+
+            var sum = calculator.Add("1");
+
+            sum.Should().Be(1);
+        }
     }
 }
