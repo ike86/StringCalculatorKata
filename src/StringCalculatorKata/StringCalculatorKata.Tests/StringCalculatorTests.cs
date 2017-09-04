@@ -11,24 +11,16 @@ namespace StringCalculatorKata.Tests
     [TestFixture]
     public class StringCalculatorTests
     {
-        [Test]
-        public void ReturnsZero_If_NumbersIsEmpty()
+        [TestCase("", 0, TestName = "ReturnsZero_If_NumbersIsEmpty")]
+        [TestCase("1", 1)]
+        [TestCase("2", 2)]
+        public void ReturnsNumber_If_NumbersContainsANumber(string numbers, int expected)
         {
             var calculator = new StringCalculator();
 
-            var sum = calculator.Add(string.Empty);
+            var sum = calculator.Add(numbers);
 
-            sum.Should().Be(0);
-        }
-
-        [Test]
-        public void ReturnsNumber_If_NumbersContainsANumber()
-        {
-            var calculator = new StringCalculator();
-
-            var sum = calculator.Add("1");
-
-            sum.Should().Be(1);
+            sum.Should().Be(expected);
         }
     }
 }
