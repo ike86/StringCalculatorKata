@@ -14,7 +14,9 @@ namespace StringCalculatorKata.Tests
         [TestCase("", 0, TestName = "ReturnsZero_If_NumbersIsEmpty")]
         [TestCase("1", 1)]
         [TestCase("2", 2)]
-        public void ReturnsNumber_If_NumbersContainsANumber(string numbers, int expected)
+        [TestCase("1,2", 3)]
+        [TestCase("1,2,3", 6)]
+        public void Returns_Sum_If_NumbersContains_Numbers(string numbers, int expected)
         {
             var calculator = new StringCalculator();
 
