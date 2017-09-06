@@ -17,6 +17,7 @@ namespace StringCalculatorKata.Tests
         [TestCase("1,2", 3)]
         [TestCase("1,2,3", 6)]
         [TestCase("//;\n1;2", 3)]
+        [TestCase("//\n\n1\n2", 3)]
         public void Returns_sum_If_Numbers_contains_numbers(string numbers, int expected)
         {
             var calculator = new StringCalculator();

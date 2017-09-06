@@ -24,17 +24,17 @@ namespace StringCalculatorKata
                 return 0;
             }
 
-            var separators = this.separators;
             if (HasSeparator(numbers))
             {
-                var tokens = numbers.Split(new[] { "\n" }, StringSplitOptions.None);
-                var separator = tokens.First().Substring(2);
+                var separator = GetSeparator(numbers);
 
-                numbers = tokens[1];
-                separators = new[] { separator };
+                return numbers.Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries)
+                    .Where(x => x != "//")
+                    .Select(x => int.Parse(x))
+                    .Sum();
             }
 
-            return numbers.Split(separators, StringSplitOptions.None)
+            return numbers.Split(this.separators, StringSplitOptions.RemoveEmptyEntries)
                 .Select(x => int.Parse(x))
                 .Sum();
         }
@@ -42,6 +42,18 @@ namespace StringCalculatorKata
         private static bool HasSeparator(string numbers)
         {
             return numbers.StartsWith("//");
+        }
+
+        private static string GetSeparator(string numbers)
+        {
+            var tokens = numbers.Split(new[] { "\n" }, StringSplitOptions.None);
+            var separator = tokens.First().Substring(2);
+            if (separator == string.Empty)
+            {
+                separator = "\n";
+            }
+
+            return separator;
         }
     }
 }
