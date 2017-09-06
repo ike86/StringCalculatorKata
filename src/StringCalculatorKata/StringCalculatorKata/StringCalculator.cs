@@ -24,9 +24,24 @@ namespace StringCalculatorKata
                 return 0;
             }
 
-            return numbers.Split(this.separators, StringSplitOptions.None)
+            var separators = this.separators;
+            if (HasSeparator(numbers))
+            {
+                var tokens = numbers.Split(new[] { "\n" }, StringSplitOptions.None);
+                var separator = tokens.First().Substring(2);
+
+                numbers = tokens[1];
+                separators = new[] { separator };
+            }
+
+            return numbers.Split(separators, StringSplitOptions.None)
                 .Select(x => int.Parse(x))
                 .Sum();
+        }
+
+        private static bool HasSeparator(string numbers)
+        {
+            return numbers.StartsWith("//");
         }
     }
 }
